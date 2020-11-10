@@ -1,0 +1,10 @@
+GET /api/workouts
+POST /api/workouts
+PUT /api/workouts
+GET /api/workouts/range
+GET /api/stats
+
+GET /exercise - returns exercise.html
+
+
+mongo "mongodb+srv://cluster0.jlxfk.mongodb.net/fitness-tracker" --username trilambda122

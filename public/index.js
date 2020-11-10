@@ -1,3 +1,4 @@
+/* eslint-disable */
 init();
 
 async function init() {
@@ -10,4 +11,3 @@ async function init() {
     }
   }
 }
-
