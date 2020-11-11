@@ -60,18 +60,19 @@ app.get('/api/workouts/', (req, res) => {
 
 // api call to add a workout to the database
 app.put('/api/workouts/:id', ({ body }, res) => {
-  console.log("in the PUT route---->");
-  console.log(body);
-
+  // body is passed from the html form and deconstructed
+  // it is json that contains the info about the exercise only
+  // so we create a single workout based on the Workout model
+  // and then push out body param into the exercies array that is part of the Workout Model
   const aWorkout = new db.Workout(body);
-
   aWorkout.exercises.push(body);
 
-  console.log("a Workout  " + aWorkout)
-
-  aWorkout.save((err, data) => {});
-
-
+  aWorkout.save((err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    res.json(data);
+  });
 });
 
 app.listen(3000, () => {
