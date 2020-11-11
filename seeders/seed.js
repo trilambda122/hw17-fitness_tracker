@@ -1,8 +1,10 @@
 /* eslint-disable */
 let mongoose = require("mongoose");
 let db = require("../models");
+const dotenv = require("dotenv").config();
 
-mongoose.connect("mongodb://localhost/workout", {
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useFindAndModify: false
 });

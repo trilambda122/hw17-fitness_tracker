@@ -8,3 +8,5 @@ GET /exercise - returns exercise.html
 
 
 mongo "mongodb+srv://cluster0.jlxfk.mongodb.net/fitness-tracker" --username trilambda122
+
+db.getCollection('workouts').find({"exercises.type" : "resistance"})
