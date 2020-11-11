@@ -2,7 +2,7 @@ const express = require('express');
 const { get } = require('http');
 const mongoose = require('mongoose');
 const logger = require('morgan');
-const dotenv = require("dotenv").config();
+const dotenv = require('dotenv').config();
 
 const { Workout } = require('./models');
 const db = require('./models');
@@ -25,21 +25,18 @@ mongoose.connection.once('open', () => {
   console.log('Connected to the Database!!');
 });
 
-// const work = db.Workout.find().then(results => { console.log(results) });
-// console.log(work);
-
 // render the exercise html page
 app.get('/exercise', (req, res) => {
   res.sendFile('/public/exercise.html', { root: __dirname });
 });
 
-// redner the stats html page
+// render the stats html page
 app.get('/stats', (req, res) => {
   console.log('what is going on');
   res.sendFile('/public/stats.html', { root: __dirname });
 });
 
-// apifor returning all the workout data
+// api for returning all the workout data this call is used by the stats.html page
 app.get('/api/workouts/range', (req, res) => {
   db.Workout.find({})
     .then(workoutResults => {
@@ -61,17 +58,18 @@ app.get('/api/workouts/', (req, res) => {
     });
 });
 
+// api call to add a workout to the database
 app.put('/api/workouts/:id', ({ body }, res) => {
   console.log("in the PUT route---->");
   console.log(body);
 
-  const workout = new db.Workout(body);
+  const aWorkout = new db.Workout(body);
 
-  db.Workout.create(workout).then(results => {
-    res.json(results).catch(err => {
-      res.json(err);
-    });
-  })
+  aWorkout.exercises.push(body);
+
+  console.log("a Workout  " + aWorkout)
+
+  aWorkout.save((err, data) => {});
 
 
 });
