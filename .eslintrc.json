@@ -14,7 +14,10 @@
     "rules": {
         "no-unused-vars": "warn",
         "indent": ["error", 2],
-        "eol-last": "warn",
-        "prefer-destructuring":"warn"
+        "prefer-destructuring":"warn",
+        "eol-last":"off",
+        "func-names":"off",
+        "space-before-function-paren":"off",
+        "arrow-parens":"off"
     }
 }
