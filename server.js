@@ -7,6 +7,7 @@ const dotenv = require('dotenv').config();
 const { Workout } = require('./models');
 const db = require('./models');
 
+const PORT = process.env.PORT || 3000;
 // create express instance
 const app = express();
 
@@ -86,6 +87,6 @@ app.put('/api/workouts/:id', ({ body }, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log('App running on port 3000!');
+app.listen(PORT, () => {
+  console.log(`APP is running on port: ${PORT}!`);
 });
