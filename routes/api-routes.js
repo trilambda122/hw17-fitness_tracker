@@ -35,15 +35,10 @@ module.exports = function(app) {
         res.json(err);
       });
   });
-  // api call to add a workout to the database
-  app.put('/api/workouts/:id', ({ body }, res) => {
-    // body is passed from the html form and deconstructed
-    // it is json that contains the info about the exercise only
-    // so we create a single workout based on the Workout model
-    // and then push out body param into the exercies array that is part of the Workout Model
-    const aWorkout = new db.Workout(body);
-    aWorkout.exercises.push(body);
-
+  // api call to add a exercise to an existing workout
+  app.put('/api/workouts/:id', async(req, res) => {
+    const aWorkout = await db.Workout.findById(req.params.id).exec();
+    aWorkout.exercises.push(req.body);
     aWorkout.save((err, data) => {
       if (err) {
         console.log(err);
