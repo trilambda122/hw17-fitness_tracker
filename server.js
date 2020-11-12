@@ -20,7 +20,12 @@ app.use(express.static('public'));
 
 const uri = process.env.ATLAS_URI;
 // connect to the database
-mongoose.connect(process.env.MONGODB_URI || uri, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
 mongoose.connection.once('open', () => {
   console.log('Connected to the Database!!');
 });
@@ -57,6 +62,12 @@ app.get('/api/workouts/', (req, res) => {
       res.json(err);
     });
 });
+
+app.post('/api/workouts/', (req, res) => {
+  console.log('got a POST requests for /api/workouts');
+
+});
+
 
 // api call to add a workout to the database
 app.put('/api/workouts/:id', ({ body }, res) => {
