@@ -30,7 +30,11 @@ const WorkoutSchema = new Schema({
   }],
 });
 
-
+WorkoutSchema.virtual('total').get(function() {
+  return this.exercises.duration.reduce((total, exercises) => {
+    total + exercises.duration;
+  }, 0);
+});
 
 const Workout = mongoose.model('Workout', WorkoutSchema);
 
