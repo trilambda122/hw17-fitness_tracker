@@ -2,7 +2,7 @@
 
 [![Generic badge](https://img.shields.io/static/v1?label=license&message=MIT%20License&color=green&style=for-the-badge)](https://shields.io/) 
 # Project name : FITNESS TRACKER
-## Live project site can be acces here: 	[HW-17 Fitness Tracker](https://dashboard.heroku.com/apps/boiling-dawn-12476)
+## Live project site can be acces here: 	[HW-17 Fitness Tracker](https://boiling-dawn-12476.herokuapp.com/)
 
 ## Project Repo [hw17-fitness_tracker](https://github.com/trilambda122/hw17-fitness_tracker)
 
